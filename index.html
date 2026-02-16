@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>José & Beatriz — Save the Date</title>
+  <meta name="description" content="José & Beatriz — 06/09/2026 — Maison Cascade, Charitas, Niterói (RJ). Save the Date." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbfaf7;
+      --card: rgba(255,255,255,.78);
+      --text: #1f2428;
+      --muted: #5b636a;
+      --line: rgba(31,36,40,.12);
+      --accent: #b08a5a;
+      --accent2: #9b6b4a;
+      --shadow: 0 18px 50px rgba(0,0,0,.10);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1000px 600px at 20% 0%, rgba(176,138,90,.12), transparent 60%),
+      radial-gradient(900px 600px at 90% 10%, rgba(155,107,74,.10), transparent 55%),
+      var(--bg);
+    }
+
+    a{ color: inherit; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 24px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 12px 0 18px;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:4px;
+      line-height:1.05;
+    }
+    .brand .names{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing:.2px;
+      font-weight:600;
+    }
+    .brand .date{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      backdrop-filter: blur(8px);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(176,138,90,.12);
+    }
+
+    .hero{
+      position:relative;
+      border-radius: calc(var(--radius) + 10px);
+      overflow:hidden;
+      min-height: 520px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.65);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)),
+        url("assets/img/hero.jpg") center/cover no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(900px 520px at 20% 10%, rgba(176,138,90,.25), transparent 60%),
+      radial-gradient(850px 520px at 85% 30%, rgba(155,107,74,.20), transparent 55%);
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      padding: 44px 28px;
+      min-height: 520px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      gap: 16px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(8px);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 11px;
+    }
+    h1{
+      margin:0;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing:.2px;
+      font-size: clamp(38px, 6vw, 62px);
+      line-height: .96;
+      text-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .subtitle{
+      margin:0;
+      max-width: 720px;
+      font-size: 15.5px;
+      color: rgba(255,255,255,.90);
+      line-height: 1.55;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(31,36,40,.10);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card .pad{ padding: 22px; }
+    .card h2{
+      margin: 0 0 10px;
+      font-family:"Cormorant Garamond", serif;
+      font-weight: 600;
+      letter-spacing:.2px;
+      font-size: 28px;
+    }
+    .card p{ margin: 10px 0; color: var(--muted); line-height:1.65; font-size: 14.5px; }
+
+    .facts{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .fact{
+      display:flex; gap: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      border-radius: 14px;
+      padding: 12px 12px;
+    }
+    .icon{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: rgba(176,138,90,.14);
+      border: 1px solid rgba(176,138,90,.25);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+    }
+    .fact b{ display:block; font-size: 13px; margin-bottom: 2px; }
+    .fact span{ display:block; font-size: 13px; color: var(--muted); }
+
+    .countdown{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .tile{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align:center;
+    }
+    .tile .n{
+      font-family:"Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      color: var(--text);
+    }
+    .tile .l{
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section{
+      margin-top: 18px;
+    }
+    .section .head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 12px;
+      padding: 0 2px;
+      margin: 10px 0 12px;
+    }
+    .section .head h3{
+      margin:0;
+      font-family:"Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: 26px;
+    }
+    .section .head .hint{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .list{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .item{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .item b{ display:block; font-size: 14px; margin-bottom: 6px; }
+    .item .meta{ font-size: 13px; color: var(--muted); line-height:1.5; }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .ph{
+      position:relative;
+      border-radius: 16px;
+      overflow:hidden;
+      min-height: 140px;
+      border: 1px solid rgba(31,36,40,.10);
+      background: #f0ede7;
+    }
+    .ph img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .cta{
+      display:flex; gap: 10px; flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      appearance:none; border: 1px solid rgba(31,36,40,.14);
+      background: rgba(255,255,255,.70);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      cursor:pointer;
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      transition: transform .15s ease, background .15s ease;
+      backdrop-filter: blur(10px);
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.85); }
+    .btn.primary{
+      border-color: rgba(176,138,90,.35);
+      background: rgba(176,138,90,.18);
+    }
+
+    footer{
+      margin: 22px 0 10px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap;
+    }
+
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+      .list{ grid-template-columns: 1fr; }
+      .hero{ min-height: 520px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="names">José & Beatriz</div>
+      <div class="date">Domingo, 06/09/2026 • 16:30 • Maison Cascade, Charitas, Niterói (RJ)</div>
+    </div>
+
+    <div class="pill" title="Save the Date">
+      <span class="dot"></span>
+      Save the Date
+    </div>
+  </div>
+
+  <section class="hero" aria-label="Capa">
+    <div class="hero-inner">
+      <div class="kicker">Save the Date</div>
+      <h1>José & Beatriz</h1>
+      <p class="subtitle">
+        Entre o pôr do sol, o mar e a vista que só Niterói tem, vamos dizer nosso <b>SIM</b>.
+      </p>
+    </div>
+  </section>
+
+  <section class="grid" aria-label="Conteúdo principal">
+    <div class="card">
+      <div class="pad">
+        <h2>Nossa mensagem</h2>
+        <p>
+          Porque amor é encontro, e ele só é completo quando conseguimos reunir pessoas especiais para compartilhar este
+          momento conosco.
+        </p>
+        <p><b>Então, contamos com sua presença!</b></p>
+
+        <div class="facts">
+          <div class="fact">
+            <div class="icon" aria-hidden="true">📅</div>
+            <div>
+              <b>Data</b>
+              <span>Domingo, 06/09/2026</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="icon" aria-hidden="true">🕟</div>
+            <div>
+              <b>Horário</b>
+              <span>16:30</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="icon" aria-hidden="true">📍</div>
+            <div>
+              <b>Local</b>
+              <span>Maison Cascade — Charitas, Niterói (RJ)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="#" id="mapLink" rel="noopener">🗺️ Ver rota (Waze/Maps)</a>
+          <a class="btn" href="#" id="rsvpLink" rel="noopener">🤍 Confirmar presença (em breve)</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div class="pad">
+        <h2>Contagem regressiva</h2>
+        <p>Falta pouco para o nosso dia — e vai ser ainda mais especial com você.</p>
+
+        <div class="countdown" role="timer" aria-live="polite">
+          <div class="tile"><div class="n" id="dd">—</div><div class="l">Dias</div></div>
+          <div class="tile"><div class="n" id="hh">—</div><div class="l">Horas</div></div>
+          <div class="tile"><div class="n" id="mm">—</div><div class="l">Min</div></div>
+          <div class="tile"><div class="n" id="ss">—</div><div class="l">Seg</div></div>
+        </div>
+
+        <p style="margin-top:14px;">
+          <b>Em breve</b>, enviaremos o convite oficial com o link do nosso site com as demais informações.
+        </p>
+        <p>Esperamos você! <br/>Com amor,<br/><b>José e Beatriz</b></p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" aria-label="Hospedagem">
+    <div class="head">
+      <h3>Hospedagem</h3>
+      <div class="hint">Sugestões para quem já quer se programar</div>
+    </div>
+
+    <div class="list">
+      <div class="item">
+        <b>Perto do local (≈ 5 min)</b>
+        <div class="meta">
+          🛎️ Hotel Solar do Amanhecer — Charitas, Niterói<br/>
+          🛎️ Pousada Charitas Saint Malo — Charitas, Niterói
+        </div>
+      </div>
+
+      <div class="item">
+        <b>Icaraí e Ingá (≈ 15–20 min)</b>
+        <div class="meta">
+          🛎️ Icaraí Praia Hotel<br/>
+          🛎️ Hotel H Niterói<br/>
+          🛎️ Hotel Pettit Village Icaraí / Hotel Village Icaraí / Icaraí Suítes
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Galeria">
+    <div class="head">
+      <h3>Nossas fotos</h3>
+      <div class="hint">Envie as imagens e eu aplico aqui</div>
+    </div>
+
+    <div class="gallery">
+      <div class="ph"><img src="assets/img/foto-01.jpg" alt="Foto do casal 1" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-01.jpg</span>';"></div>
+      <div class="ph"><img src="assets/img/foto-02.jpg" alt="Foto do casal 2" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-02.jpg</span>';"></div>
+      <div class="ph"><img src="assets/img/foto-03.jpg" alt="Foto do casal 3" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-03.jpg</span>';"></div>
+      <div class="ph"><img src="assets/img/foto-04.jpg" alt="Foto do casal 4" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-04.jpg</span>';"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> José & Beatriz</div>
+    <div style="opacity:.9">Save the Date • Niterói (RJ)</div>
+  </footer>
+</div>
+
+<script>
+  // ====== RSVP (opcional) ======
+  // Se quiser RSVP sem backend: crie um Google Form e cole o link abaixo
+  const RSVP_URL = ""; // ex: "https://forms.gle/..."
+
+  // ====== DATA/HORA DO EVENTO ======
+  // Contagem regressiva para 06/09/2026 às 16:30
+  const weddingDate = new Date("2026-09-06T16:30:00");
+
+  // ====== LOCAL (Maison Cascade) ======
+  const lat = -22.930003;
+  const lng = -43.0965043;
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+
+  function tick(){
+    const now = new Date();
+    let diff = weddingDate.getTime() - now.getTime();
+    if (diff < 0) diff = 0;
+
+    const sec = Math.floor(diff / 1000);
+    const days = Math.floor(sec / (3600*24));
+    const hours = Math.floor((sec % (3600*24)) / 3600);
+    const mins = Math.floor((sec % 3600) / 60);
+    const secs = sec % 60;
+
+    document.getElementById("dd").textContent = days;
+    document.getElementById("hh").textContent = pad(hours);
+    document.getElementById("mm").textContent = pad(mins);
+    document.getElementById("ss").textContent = pad(secs);
+  }
+
+  // Abre Waze no celular e Google Maps no desktop
+  function openRoute(){
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Waze (navegação)
+      window.location.href = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
+    } else {
+      // Google Maps (desktop)
+      window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank", "noopener");
+    }
+  }
+
+  // Link do mapa
+  const mapLink = document.getElementById("mapLink");
+  mapLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    openRoute();
+  });
+
+  // RSVP
+  const rsvpLink = document.getElementById("rsvpLink");
+  if (RSVP_URL){
+    rsvpLink.href = RSVP_URL;
+    rsvpLink.target = "_blank";
+    rsvpLink.textContent = "🤍 Confirmar presença";
+  } else {
+    rsvpLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Em breve: vamos liberar o link de confirmação 🙂");
+    });
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
