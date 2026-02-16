@@ -117,7 +117,7 @@
     footer{margin:22px 0 10px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
       display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
-    /* ====== RESTAURANTES (sofisticado) ====== */
+    /* ====== RESTAURANTES ====== */
     .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
     .tab{
       border:1px solid var(--line);
@@ -222,6 +222,7 @@
         <div class="cta">
           <a class="btn primary" href="#" id="mapLink" rel="noopener">🗺️ Ver rota (Waze/Maps)</a>
           <a class="btn" href="#" id="rsvpLink" rel="noopener">🤍 Confirmar presença (em breve)</a>
+          <a class="btn" href="presentes.html">🎁 Presentes</a>
         </div>
       </div>
     </div>
@@ -237,42 +238,11 @@
           <div class="tile"><div class="n" id="mm">—</div><div class="l">Min</div></div>
           <div class="tile"><div class="n" id="ss">—</div><div class="l">Seg</div></div>
         </div>
-
-        <p style="margin-top:14px;">
-          <b>Em breve</b>, enviaremos o convite oficial com o link do nosso site com as demais informações.
-        </p>
-        <p>Esperamos você! <br/>Com amor,<br/><b>José e Beatriz</b></p>
       </div>
     </aside>
   </section>
 
-  <section class="section" aria-label="Hospedagem">
-    <div class="head">
-      <h3>Hospedagem</h3>
-      <div class="hint">Sugestões para quem já quer se programar</div>
-    </div>
-
-    <div class="list">
-      <div class="item">
-        <b>Perto do local (≈ 5 min)</b>
-        <div class="meta">
-          🛎️ Hotel Solar do Amanhecer — Charitas, Niterói<br/>
-          🛎️ Pousada Charitas Saint Malo — Charitas, Niterói
-        </div>
-      </div>
-
-      <div class="item">
-        <b>Icaraí e Ingá (≈ 15–20 min)</b>
-        <div class="meta">
-          🛎️ Icaraí Praia Hotel<br/>
-          🛎️ Hotel H Niterói<br/>
-          🛎️ Hotel Pettit Village Icaraí / Hotel Village Icaraí / Icaraí Suítes
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== RESTAURANTES (TODOS) ===== -->
+  <!-- ===== RESTAURANTES (TODOS + MAC + MOCELLIN) ===== -->
   <section class="section" aria-label="Restaurantes">
     <div class="head">
       <h3>Onde comer em Niterói</h3>
@@ -284,7 +254,7 @@
       <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="pt">Português</div>
       <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="ital">Italiano</div>
       <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="carnes">Carnes & BBQ</div>
-      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="br">Clássicos brasileiros</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="br">Clássicos & experiências</div>
     </div>
 
     <!-- Frutos do mar -->
@@ -302,7 +272,7 @@
       </div>
 
       <div class="rest">
-        <div class="top"><div class="name">Restaurante Malbek</div><div class="badge">mar & contemporâneo</div></div>
+        <div class="top"><div class="name">Restaurante Malbek</div><div class="badge">contemporâneo</div></div>
         <div class="desc">Boa pedida para jantar, com menu contemporâneo em Icaraí.</div>
         <div class="actions"><a class="btn link" href="#" data-maps="Restaurante Malbek Icaraí Niterói">Abrir no Maps</a></div>
       </div>
@@ -333,17 +303,23 @@
     <div class="grid3" data-pane="ital" style="display:none">
       <div class="rest">
         <div class="top"><div class="name">Torninha</div><div class="badge">italiano</div></div>
-        <div class="desc">Uma opção elegante em Icaraí para jantar com clima especial.</div>
+        <div class="desc">Opção elegante em Icaraí para jantar com clima especial.</div>
         <div class="actions"><a class="btn link" href="#" data-maps="Torninha Niterói">Abrir no Maps</a></div>
       </div>
     </div>
 
-    <!-- Carnes & BBQ -->
+    <!-- Carnes & BBQ (inclui Mocellin) -->
     <div class="grid3" data-pane="carnes" style="display:none">
       <div class="rest">
         <div class="top"><div class="name">Biasibetti Steak</div><div class="badge">steakhouse</div></div>
         <div class="desc">Cortes nobres — ótima opção para quem curte carne de verdade.</div>
         <div class="actions"><a class="btn link" href="#" data-maps="Biasibetti Steak Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Mocellin Steak</div><div class="badge">steakhouse</div></div>
+        <div class="desc">Steakhouse conhecida — ótima pedida para jantar.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Mocellin Steak Niterói">Abrir no Maps</a></div>
       </div>
 
       <div class="rest">
@@ -359,11 +335,11 @@
       </div>
     </div>
 
-    <!-- Clássicos brasileiros -->
+    <!-- Clássicos & experiências (inclui MAC) -->
     <div class="grid3" data-pane="br" style="display:none">
       <div class="rest">
         <div class="top"><div class="name">Caneco Gelado do Mário</div><div class="badge">clássico</div></div>
-        <div class="desc">Bem tradicional e descontraído — “comer bem sem cerimônia”.</div>
+        <div class="desc">Tradicional e descontraído — “comer bem sem cerimônia”.</div>
         <div class="actions"><a class="btn link" href="#" data-maps="Caneco Gelado do Mário Niterói">Abrir no Maps</a></div>
       </div>
 
@@ -384,24 +360,16 @@
         <div class="desc">Leve e moderno — uma boa pedida para fim de tarde/noite.</div>
         <div class="actions"><a class="btn link" href="#" data-maps="Noi Niterói restaurante">Abrir no Maps</a></div>
       </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Bistrô do MAC</div><div class="badge">vista & experiência</div></div>
+        <div class="desc">Restaurante dentro do MAC — perfeito para combinar com o passeio e a vista.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Bistrô MAC Niterói">Abrir no Maps</a></div>
+      </div>
     </div>
 
     <div style="margin-top:10px;color:var(--muted);font-size:13px">
       *Dica: clique em “Abrir no Maps” para ver horários, avaliações e rota.
-    </div>
-  </section>
-
-  <section class="section" aria-label="Galeria">
-    <div class="head">
-      <h3>Nossas fotos</h3>
-      <div class="hint">Envie as imagens e eu aplico aqui</div>
-    </div>
-
-    <div class="gallery">
-      <div class="ph"><img src="assets/img/foto-01.jpg" alt="Foto do casal 1" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-01.jpg</span>';"></div>
-      <div class="ph"><img src="assets/img/foto-02.jpg" alt="Foto do casal 2" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-02.jpg</span>';"></div>
-      <div class="ph"><img src="assets/img/foto-03.jpg" alt="Foto do casal 3" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-03.jpg</span>';"></div>
-      <div class="ph"><img src="assets/img/foto-04.jpg" alt="Foto do casal 4" onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-04.jpg</span>';"></div>
     </div>
   </section>
 
@@ -412,51 +380,31 @@
 </div>
 
 <script>
-  // ====== RSVP (opcional) ======
-  const RSVP_URL = ""; // ex: "https://forms.gle/..."
-
-  // ====== DATA/HORA DO EVENTO ======
+  const RSVP_URL = "";
   const weddingDate = new Date("2026-09-06T16:30:00");
-
-  // ====== LOCAL (Maison Cascade) ======
   const lat = -22.930003;
   const lng = -43.0965043;
 
   function pad(n){ return String(n).padStart(2,"0"); }
-
   function tick(){
-    const now = new Date();
-    let diff = weddingDate.getTime() - now.getTime();
+    let diff = weddingDate.getTime() - new Date().getTime();
     if (diff < 0) diff = 0;
 
     const sec = Math.floor(diff / 1000);
-    const days = Math.floor(sec / (3600*24));
-    const hours = Math.floor((sec % (3600*24)) / 3600);
-    const mins = Math.floor((sec % 3600) / 60);
-    const secs = sec % 60;
-
-    document.getElementById("dd").textContent = days;
-    document.getElementById("hh").textContent = pad(hours);
-    document.getElementById("mm").textContent = pad(mins);
-    document.getElementById("ss").textContent = pad(secs);
+    dd.textContent = Math.floor(sec / 86400);
+    hh.textContent = pad(Math.floor((sec % 86400) / 3600));
+    mm.textContent = pad(Math.floor((sec % 3600) / 60));
+    ss.textContent = pad(sec % 60);
   }
+  tick(); setInterval(tick, 1000);
 
-  // Abre Waze no celular e Google Maps no desktop
   function openRoute(){
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.href = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
-    } else {
-      window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank", "noopener");
-    }
+    if (isMobile) location.href = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
+    else window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank", "noopener");
   }
+  mapLink.addEventListener("click", (e)=>{ e.preventDefault(); openRoute(); });
 
-  // Botão principal do local
-  const mapLink = document.getElementById("mapLink");
-  mapLink.addEventListener("click", (e) => { e.preventDefault(); openRoute(); });
-
-  // RSVP
-  const rsvpLink = document.getElementById("rsvpLink");
   if (RSVP_URL){
     rsvpLink.href = RSVP_URL;
     rsvpLink.target = "_blank";
@@ -468,38 +416,31 @@
     });
   }
 
-  // Tabs (restaurantes)
   const tabs = Array.from(document.querySelectorAll(".tab"));
   const panes = Array.from(document.querySelectorAll("[data-pane]"));
-
   function selectTab(key){
-    tabs.forEach(t => {
+    tabs.forEach(t=>{
       const active = t.dataset.tab === key;
       t.classList.toggle("active", active);
       t.setAttribute("aria-selected", active ? "true" : "false");
     });
-    panes.forEach(p => {
-      p.style.display = (p.dataset.pane === key) ? "" : "none";
-    });
+    panes.forEach(p => p.style.display = (p.dataset.pane === key) ? "" : "none");
   }
-
-  tabs.forEach(t => {
-    t.addEventListener("click", () => selectTab(t.dataset.tab));
-    t.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectTab(t.dataset.tab); }
+  tabs.forEach(t=>{
+    t.addEventListener("click",()=>selectTab(t.dataset.tab));
+    t.addEventListener("keydown",(e)=>{
+      if(e.key==="Enter"||e.key===" "){ e.preventDefault(); selectTab(t.dataset.tab); }
     });
   });
 
-  // Constrói links do Google Maps por busca (sem depender do endereço exato)
-  document.querySelectorAll("[data-maps]").forEach(a => {
+  document.querySelectorAll("[data-maps]").forEach(a=>{
     const q = a.getAttribute("data-maps");
     a.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
     a.target = "_blank";
     a.rel = "noopener";
   });
 
-  document.getElementById("year").textContent = new Date().getFullYear();
-  tick(); setInterval(tick, 1000);
+  year.textContent = new Date().getFullYear();
 </script>
 </body>
 </html>

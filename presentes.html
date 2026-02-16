@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>José & Beatriz — Presentes</title>
+  <meta name="description" content="Lista de presentes — José & Beatriz" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fbfaf7; --card:rgba(255,255,255,.78);
+      --text:#1f2428; --muted:#5b636a;
+      --line:rgba(31,36,40,.12);
+      --accent:#b08a5a;
+      --shadow:0 18px 50px rgba(0,0,0,.10);
+      --radius:18px; --max:980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% 0%, rgba(176,138,90,.12), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(155,107,74,.10), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+    .top{
+      display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+      padding:10px 0 14px
+    }
+    .brand .names{
+      font-family:"Cormorant Garamond",serif;
+      font-size:30px;font-weight:600;letter-spacing:.2px;margin:0
+    }
+    .brand .sub{color:var(--muted);font-size:13px;margin-top:4px}
+    .pill{
+      display:inline-flex;gap:10px;align-items:center;
+      border:1px solid var(--line);background:rgba(255,255,255,.55);
+      padding:10px 12px;border-radius:999px;font-size:13px;color:var(--muted);
+      backdrop-filter:blur(8px)
+    }
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px rgba(176,138,90,.12)}
+    .card{
+      background:var(--card);
+      border:1px solid rgba(31,36,40,.10);
+      border-radius:var(--radius);
+      box-shadow:0 10px 25px rgba(0,0,0,.06);
+      backdrop-filter:blur(10px);
+      padding:22px;
+      margin-top:14px;
+    }
+    h1,h2{font-family:"Cormorant Garamond",serif;margin:0 0 10px}
+    h1{font-size:34px}
+    p{margin:10px 0;color:var(--muted);line-height:1.65}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      appearance:none;border:1px solid rgba(31,36,40,.14);
+      background:rgba(255,255,255,.70);
+      color:var(--text);
+      padding:12px 14px;border-radius:14px;
+      cursor:pointer;font-weight:600;font-size:13px;
+      text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+      transition:transform .15s ease, background .15s ease;
+      backdrop-filter:blur(10px)
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.85)}
+    .btn.primary{border-color:rgba(176,138,90,.35);background:rgba(176,138,90,.18)}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .gift{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      border-radius:16px;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .gift .left{min-width:0}
+    .gift .title{font-weight:700;font-size:14px;margin-bottom:4px}
+    .gift .meta{font-size:13px;color:var(--muted);line-height:1.45}
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid rgba(31,36,40,.10);
+      background:rgba(255,255,255,.55);
+      padding:7px 10px;border-radius:999px;
+      font-size:12px;color:var(--muted);
+      white-space:nowrap;
+    }
+    .divider{height:1px;background:var(--line);margin:14px 0}
+    .pixbox{
+      display:flex;gap:12px;align-items:center;flex-wrap:wrap
+    }
+    .pix{
+      border:1px dashed rgba(31,36,40,.22);
+      background:rgba(255,255,255,.55);
+      padding:12px 14px;border-radius:14px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:13px;color:var(--text);
+      max-width:100%;
+      overflow:auto;
+    }
+    footer{
+      margin:22px 0 10px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <p class="names">José & Beatriz</p>
+      <div class="sub">Presentes • do jeitinho que a gente gosta 😄</div>
+    </div>
+    <div class="pill"><span class="dot"></span>Lista de Presentes</div>
+  </div>
+
+  <div class="card">
+    <h1>Presentes (sem estresse)</h1>
+    <p>
+      O maior presente é ter você com a gente 💛 <br/>
+      Mas, se você quiser nos ajudar a montar nosso cantinho (ou nossa lua de mel),
+      deixamos algumas ideias aqui — bem leve, sem obrigação.
+    </p>
+
+    <div class="cta">
+      <a class="btn primary" href="index.html">← Voltar para o site</a>
+      <a class="btn" href="#lista">🎁 Ver sugestões</a>
+      <a class="btn" href="#pix">✨ Contribuir via PIX</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 id="lista">Sugestões (pra facilitar)</h2>
+    <p>
+      Você pode escolher qualquer um desses links — ou seguir seu coração e surpreender 😄
+    </p>
+
+    <div class="grid">
+      <!-- ====== EDITE AQUI: itens e links ====== -->
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jantar a dois (lua de mel)</div>
+          <div class="meta">Um presentinho simbólico pra brindar a nova fase 🥂</div>
+        </div>
+        <div>
+          <span class="tag">💛 simbólico</span>
+          <div style="height:8px"></div>
+          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Cafeteira / itens de cozinha</div>
+          <div class="meta">Pra deixar o nosso cantinho ainda mais gostoso ☕</div>
+        </div>
+        <div>
+          <span class="tag">🏡 casa</span>
+          <div style="height:8px"></div>
+          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jogo de cama / toalhas</div>
+          <div class="meta">Conforto é tudo (e a gente ama) 🧺</div>
+        </div>
+        <div>
+          <span class="tag">🛏️ conforto</span>
+          <div style="height:8px"></div>
+          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Contribuição para a lua de mel</div>
+          <div class="meta">Ajuda a gente a criar memórias inesquecíveis 🌅</div>
+        </div>
+        <div>
+          <span class="tag">✈️ viagem</span>
+          <div style="height:8px"></div>
+          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        </div>
+      </div>
+      <!-- ====== /EDITE AQUI ====== -->
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 id="pix">PIX (pra quem prefere praticidade)</h2>
+    <p>Se quiser contribuir com qualquer valor, aqui vai a opção mais simples:</p>
+
+    <div class="pixbox">
+      <div class="pix" id="pixKey">SUA_CHAVE_PIX_AQUI</div>
+      <button class="btn" id="copyPix">📋 Copiar PIX</button>
+    </div>
+
+    <p style="font-size:13px">
+      *Se você não usa PIX, sem problema — o importante é estar com a gente 🤍
+    </p>
+  </div>
+
+  <footer>
+    <div>© <span id="year"></span> José & Beatriz</div>
+    <div>Com amor • Niterói (RJ)</div>
+  </footer>
+</div>
+
+<script>
+  year.textContent = new Date().getFullYear();
+
+  // Copiar PIX
+  const btn = document.getElementById("copyPix");
+  const key = document.getElementById("pixKey");
+  btn.addEventListener("click", async () => {
+    try{
+      await navigator.clipboard.writeText(key.textContent.trim());
+      btn.textContent = "✅ Copiado!";
+      setTimeout(()=> btn.textContent = "📋 Copiar PIX", 1400);
+    }catch(e){
+      alert("Não consegui copiar automaticamente. Selecione e copie a chave PIX manualmente 🙂");
+    }
+  });
+</script>
+</body>
+</html>
