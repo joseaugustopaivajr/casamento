@@ -12,296 +12,160 @@
 
   <style>
     :root{
-      --bg: #fbfaf7;
-      --card: rgba(255,255,255,.78);
-      --text: #1f2428;
-      --muted: #5b636a;
-      --line: rgba(31,36,40,.12);
-      --accent: #b08a5a;
-      --accent2: #9b6b4a;
-      --shadow: 0 18px 50px rgba(0,0,0,.10);
-      --radius: 18px;
-      --max: 1080px;
+      --bg:#fbfaf7;
+      --card:rgba(255,255,255,.78);
+      --text:#1f2428;
+      --muted:#5b636a;
+      --line:rgba(31,36,40,.12);
+      --accent:#b08a5a;
+      --accent2:#9b6b4a;
+      --shadow:0 18px 50px rgba(0,0,0,.10);
+      --radius:18px;
+      --max:1080px;
     }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1000px 600px at 20% 0%, rgba(176,138,90,.12), transparent 60%),
-      radial-gradient(900px 600px at 90% 10%, rgba(155,107,74,.10), transparent 55%),
-      var(--bg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% 0%, rgba(176,138,90,.12), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(155,107,74,.10), transparent 55%),
+        var(--bg);
     }
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
 
-    a{ color: inherit; }
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 24px; }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px;
-      padding: 12px 0 18px;
-    }
-    .brand{
-      display:flex; flex-direction:column; gap:4px;
-      line-height:1.05;
-    }
-    .brand .names{
-      font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      letter-spacing:.2px;
-      font-weight:600;
-    }
-    .brand .date{
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.55);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--muted);
-      backdrop-filter: blur(8px);
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(176,138,90,.12);
-    }
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 18px}
+    .brand{display:flex;flex-direction:column;gap:4px;line-height:1.05}
+    .brand .names{font-family:"Cormorant Garamond",serif;font-size:28px;letter-spacing:.2px;font-weight:600}
+    .brand .date{font-size:13px;color:var(--muted)}
+    .pill{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.55);
+      padding:10px 12px;border-radius:999px;font-size:13px;color:var(--muted);backdrop-filter:blur(8px)}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px rgba(176,138,90,.12)}
 
     .hero{
-      position:relative;
-      border-radius: calc(var(--radius) + 10px);
-      overflow:hidden;
-      min-height: 520px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.65);
+      position:relative;border-radius:calc(var(--radius) + 10px);overflow:hidden;min-height:520px;
+      box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.65);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.35)),
+        linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.35)),
         url("assets/img/hero.jpg") center/cover no-repeat;
     }
     .hero::after{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(900px 520px at 20% 10%, rgba(176,138,90,.25), transparent 60%),
-      radial-gradient(850px 520px at 85% 30%, rgba(155,107,74,.20), transparent 55%);
-      pointer-events:none;
-      mix-blend-mode: screen;
+      content:"";position:absolute;inset:-1px;
+      background:
+        radial-gradient(900px 520px at 20% 10%, rgba(176,138,90,.25), transparent 60%),
+        radial-gradient(850px 520px at 85% 30%, rgba(155,107,74,.20), transparent 55%);
+      pointer-events:none;mix-blend-mode:screen;
     }
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      padding: 44px 28px;
-      min-height: 520px;
+    .hero-inner{position:relative;z-index:2;padding:44px 28px;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;gap:16px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;width:fit-content;padding:10px 14px;border-radius:999px;
+      background:rgba(255,255,255,.14);color:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.22);
+      backdrop-filter:blur(8px);text-transform:uppercase;letter-spacing:.18em;font-size:11px
+    }
+    h1{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;color:#fff;letter-spacing:.2px;
+      font-size:clamp(38px,6vw,62px);line-height:.96;text-shadow:0 10px 25px rgba(0,0,0,.25)}
+    .subtitle{margin:0;max-width:720px;font-size:15.5px;color:rgba(255,255,255,.90);line-height:1.55}
+
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+    .card{
+      background:var(--card);border:1px solid rgba(31,36,40,.10);border-radius:var(--radius);
+      box-shadow:0 10px 25px rgba(0,0,0,.06);backdrop-filter:blur(10px);overflow:hidden
+    }
+    .card .pad{padding:22px}
+    .card h2{margin:0 0 10px;font-family:"Cormorant Garamond",serif;font-weight:600;letter-spacing:.2px;font-size:28px}
+    .card p{margin:10px 0;color:var(--muted);line-height:1.65;font-size:14.5px}
+
+    .facts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+    .fact{display:flex;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.65);border-radius:14px;padding:12px 12px}
+    .icon{width:34px;height:34px;border-radius:12px;background:rgba(176,138,90,.14);
+      border:1px solid rgba(176,138,90,.25);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .fact b{display:block;font-size:13px;margin-bottom:2px}
+    .fact span{display:block;font-size:13px;color:var(--muted)}
+
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+    .tile{border:1px solid var(--line);background:rgba(255,255,255,.65);border-radius:14px;padding:14px 10px;text-align:center}
+    .tile .n{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1;color:var(--text)}
+    .tile .l{margin-top:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+    .section{margin-top:18px}
+    .section .head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:0 2px;margin:10px 0 12px}
+    .section .head h3{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:26px}
+    .section .head .hint{font-size:13px;color:var(--muted)}
+
+    .list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .item{border:1px solid var(--line);background:rgba(255,255,255,.65);border-radius:16px;padding:14px}
+    .item b{display:block;font-size:14px;margin-bottom:6px}
+    .item .meta{font-size:13px;color:var(--muted);line-height:1.5}
+
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      appearance:none;border:1px solid rgba(31,36,40,.14);background:rgba(255,255,255,.70);color:var(--text);
+      padding:12px 14px;border-radius:14px;cursor:pointer;font-weight:600;font-size:13px;text-decoration:none;
+      display:inline-flex;align-items:center;gap:10px;transition:transform .15s ease, background .15s ease;
+      backdrop-filter:blur(10px)
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.85)}
+    .btn.primary{border-color:rgba(176,138,90,.35);background:rgba(176,138,90,.18)}
+    .btn.link{border-color:rgba(31,36,40,.12);background:rgba(255,255,255,.55)}
+
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .ph{position:relative;border-radius:16px;overflow:hidden;min-height:140px;border:1px solid rgba(31,36,40,.10);background:#f0ede7}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02) contrast(1.02)}
+
+    footer{margin:22px 0 10px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+    /* ====== RESTAURANTES (sofisticado) ====== */
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+    .tab{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.60);
+      padding:10px 12px;border-radius:999px;
+      font-size:13px;color:var(--muted);
+      cursor:pointer;user-select:none;
+      transition:transform .15s ease, background .15s ease;
+    }
+    .tab:hover{transform:translateY(-1px);background:rgba(255,255,255,.78)}
+    .tab.active{
+      border-color:rgba(176,138,90,.35);
+      background:rgba(176,138,90,.14);
+      color:var(--text);
+      font-weight:600;
+    }
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .rest{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      border-radius:16px;
+      padding:14px;
       display:flex;
       flex-direction:column;
-      justify-content:flex-end;
-      gap: 16px;
-    }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
       gap:10px;
-      width:fit-content;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.14);
-      color: rgba(255,255,255,.92);
-      border: 1px solid rgba(255,255,255,.22);
-      backdrop-filter: blur(8px);
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: 11px;
     }
-    h1{
-      margin:0;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing:.2px;
-      font-size: clamp(38px, 6vw, 62px);
-      line-height: .96;
-      text-shadow: 0 10px 25px rgba(0,0,0,.25);
+    .rest .top{display:flex;justify-content:space-between;gap:10px}
+    .rest .name{font-weight:700;font-size:14px}
+    .badge{
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      border:1px solid rgba(31,36,40,.10);
+      background:rgba(255,255,255,.55);
+      padding:6px 8px;
+      border-radius:999px;
+      white-space:nowrap;
     }
-    .subtitle{
-      margin:0;
-      max-width: 720px;
-      font-size: 15.5px;
-      color: rgba(255,255,255,.90);
-      line-height: 1.55;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-    .card{
-      background: var(--card);
-      border: 1px solid rgba(31,36,40,.10);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 25px rgba(0,0,0,.06);
-      backdrop-filter: blur(10px);
-      overflow:hidden;
-    }
-    .card .pad{ padding: 22px; }
-    .card h2{
-      margin: 0 0 10px;
-      font-family:"Cormorant Garamond", serif;
-      font-weight: 600;
-      letter-spacing:.2px;
-      font-size: 28px;
-    }
-    .card p{ margin: 10px 0; color: var(--muted); line-height:1.65; font-size: 14.5px; }
-
-    .facts{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .fact{
-      display:flex; gap: 10px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      border-radius: 14px;
-      padding: 12px 12px;
-    }
-    .icon{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      background: rgba(176,138,90,.14);
-      border: 1px solid rgba(176,138,90,.25);
-      display:flex; align-items:center; justify-content:center;
-      flex: 0 0 auto;
-    }
-    .fact b{ display:block; font-size: 13px; margin-bottom: 2px; }
-    .fact span{ display:block; font-size: 13px; color: var(--muted); }
-
-    .countdown{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .tile{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      border-radius: 14px;
-      padding: 14px 10px;
-      text-align:center;
-    }
-    .tile .n{
-      font-family:"Cormorant Garamond", serif;
-      font-size: 34px;
-      line-height: 1;
-      color: var(--text);
-    }
-    .tile .l{
-      margin-top: 6px;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .section{
-      margin-top: 18px;
-    }
-    .section .head{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 12px;
-      padding: 0 2px;
-      margin: 10px 0 12px;
-    }
-    .section .head h3{
-      margin:0;
-      font-family:"Cormorant Garamond", serif;
-      font-weight: 600;
-      font-size: 26px;
-    }
-    .section .head .hint{
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .list{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .item{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      border-radius: 16px;
-      padding: 14px;
-    }
-    .item b{ display:block; font-size: 14px; margin-bottom: 6px; }
-    .item .meta{ font-size: 13px; color: var(--muted); line-height:1.5; }
-
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-    .ph{
-      position:relative;
-      border-radius: 16px;
-      overflow:hidden;
-      min-height: 140px;
-      border: 1px solid rgba(31,36,40,.10);
-      background: #f0ede7;
-    }
-    .ph img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-      filter: saturate(1.02) contrast(1.02);
-    }
-
-    .cta{
-      display:flex; gap: 10px; flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .btn{
-      appearance:none; border: 1px solid rgba(31,36,40,.14);
-      background: rgba(255,255,255,.70);
-      color: var(--text);
-      padding: 12px 14px;
-      border-radius: 14px;
-      cursor:pointer;
-      font-weight: 600;
-      font-size: 13px;
-      text-decoration:none;
-      display:inline-flex; align-items:center; gap:10px;
-      transition: transform .15s ease, background .15s ease;
-      backdrop-filter: blur(10px);
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.85); }
-    .btn.primary{
-      border-color: rgba(176,138,90,.35);
-      background: rgba(176,138,90,.18);
-    }
-
-    footer{
-      margin: 22px 0 10px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap;
-    }
+    .rest .desc{font-size:13px;color:var(--muted);line-height:1.45}
+    .rest .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
 
     @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-      .gallery{ grid-template-columns: repeat(2, 1fr); }
-      .list{ grid-template-columns: 1fr; }
-      .hero{ min-height: 520px; }
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .list{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .hero{min-height:520px}
     }
   </style>
 </head>
@@ -343,24 +207,15 @@
         <div class="facts">
           <div class="fact">
             <div class="icon" aria-hidden="true">📅</div>
-            <div>
-              <b>Data</b>
-              <span>Domingo, 06/09/2026</span>
-            </div>
+            <div><b>Data</b><span>Domingo, 06/09/2026</span></div>
           </div>
           <div class="fact">
             <div class="icon" aria-hidden="true">🕟</div>
-            <div>
-              <b>Horário</b>
-              <span>16:30</span>
-            </div>
+            <div><b>Horário</b><span>16:30</span></div>
           </div>
           <div class="fact">
             <div class="icon" aria-hidden="true">📍</div>
-            <div>
-              <b>Local</b>
-              <span>Maison Cascade — Charitas, Niterói (RJ)</span>
-            </div>
+            <div><b>Local</b><span>Maison Cascade — Charitas, Niterói (RJ)</span></div>
           </div>
         </div>
 
@@ -417,6 +272,125 @@
     </div>
   </section>
 
+  <!-- ===== RESTAURANTES (TODOS) ===== -->
+  <section class="section" aria-label="Restaurantes">
+    <div class="head">
+      <h3>Onde comer em Niterói</h3>
+      <div class="hint">Todas as nossas recomendações</div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Categorias de restaurantes">
+      <div class="tab active" role="tab" tabindex="0" aria-selected="true" data-tab="mar">Frutos do mar</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="pt">Português</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="ital">Italiano</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="carnes">Carnes & BBQ</div>
+      <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="br">Clássicos brasileiros</div>
+    </div>
+
+    <!-- Frutos do mar -->
+    <div class="grid3" data-pane="mar">
+      <div class="rest">
+        <div class="top"><div class="name">Coco Bambu</div><div class="badge">mar</div></div>
+        <div class="desc">Ótimo para grupos e família — pratos fartos e ambiente bem servido.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Coco Bambu Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Restaurante Siri</div><div class="badge">mar</div></div>
+        <div class="desc">Frutos do mar e clima descontraído para um almoço leve.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Restaurante Siri Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Restaurante Malbek</div><div class="badge">mar & contemporâneo</div></div>
+        <div class="desc">Boa pedida para jantar, com menu contemporâneo em Icaraí.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Restaurante Malbek Icaraí Niterói">Abrir no Maps</a></div>
+      </div>
+    </div>
+
+    <!-- Português -->
+    <div class="grid3" data-pane="pt" style="display:none">
+      <div class="rest">
+        <div class="top"><div class="name">Gruta de Santo Antônio</div><div class="badge">português</div></div>
+        <div class="desc">Clássico tradicional — excelente para um almoço sem pressa.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Gruta de Santo Antônio Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Casanova</div><div class="badge">português</div></div>
+        <div class="desc">Gastronomia portuguesa com clima mais “noite especial”.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Casanova gastronomia portuguesa Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Restaurante Seu Antônio</div><div class="badge">tradicional</div></div>
+        <div class="desc">Cozinha com pegada tradicional — boa opção para quem gosta do “clássico bem feito”.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Restaurante Seu Antônio Niterói">Abrir no Maps</a></div>
+      </div>
+    </div>
+
+    <!-- Italiano -->
+    <div class="grid3" data-pane="ital" style="display:none">
+      <div class="rest">
+        <div class="top"><div class="name">Torninha</div><div class="badge">italiano</div></div>
+        <div class="desc">Uma opção elegante em Icaraí para jantar com clima especial.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Torninha Niterói">Abrir no Maps</a></div>
+      </div>
+    </div>
+
+    <!-- Carnes & BBQ -->
+    <div class="grid3" data-pane="carnes" style="display:none">
+      <div class="rest">
+        <div class="top"><div class="name">Biasibetti Steak</div><div class="badge">steakhouse</div></div>
+        <div class="desc">Cortes nobres — ótima opção para quem curte carne de verdade.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Biasibetti Steak Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">On Fire American BBQ</div><div class="badge">bbq</div></div>
+        <div class="desc">Defumados e BBQ — alternativa diferente e bem gostosa.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="On Fire American BBQ Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Família Paludo</div><div class="badge">churrasco</div></div>
+        <div class="desc">Churrasco e ambiente descontraído — bom para reunir gente.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Família Paludo Niterói churrasco">Abrir no Maps</a></div>
+      </div>
+    </div>
+
+    <!-- Clássicos brasileiros -->
+    <div class="grid3" data-pane="br" style="display:none">
+      <div class="rest">
+        <div class="top"><div class="name">Caneco Gelado do Mário</div><div class="badge">clássico</div></div>
+        <div class="desc">Bem tradicional e descontraído — “comer bem sem cerimônia”.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Caneco Gelado do Mário Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Restaurante À Mineira</div><div class="badge">caseiro</div></div>
+        <div class="desc">Culinária mineira com sabor de comida de casa.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Restaurante À Mineira Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Berton Botequim</div><div class="badge">botequim</div></div>
+        <div class="desc">Botequim com pratos brasileiros e bons drinks.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Berton Botequim Niterói">Abrir no Maps</a></div>
+      </div>
+
+      <div class="rest">
+        <div class="top"><div class="name">Noi</div><div class="badge">casual</div></div>
+        <div class="desc">Leve e moderno — uma boa pedida para fim de tarde/noite.</div>
+        <div class="actions"><a class="btn link" href="#" data-maps="Noi Niterói restaurante">Abrir no Maps</a></div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;color:var(--muted);font-size:13px">
+      *Dica: clique em “Abrir no Maps” para ver horários, avaliações e rota.
+    </div>
+  </section>
+
   <section class="section" aria-label="Galeria">
     <div class="head">
       <h3>Nossas fotos</h3>
@@ -439,11 +413,9 @@
 
 <script>
   // ====== RSVP (opcional) ======
-  // Se quiser RSVP sem backend: crie um Google Form e cole o link abaixo
   const RSVP_URL = ""; // ex: "https://forms.gle/..."
 
   // ====== DATA/HORA DO EVENTO ======
-  // Contagem regressiva para 06/09/2026 às 16:30
   const weddingDate = new Date("2026-09-06T16:30:00");
 
   // ====== LOCAL (Maison Cascade) ======
@@ -472,22 +444,16 @@
   // Abre Waze no celular e Google Maps no desktop
   function openRoute(){
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
     if (isMobile) {
-      // Waze (navegação)
       window.location.href = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
     } else {
-      // Google Maps (desktop)
       window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank", "noopener");
     }
   }
 
-  // Link do mapa
+  // Botão principal do local
   const mapLink = document.getElementById("mapLink");
-  mapLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    openRoute();
-  });
+  mapLink.addEventListener("click", (e) => { e.preventDefault(); openRoute(); });
 
   // RSVP
   const rsvpLink = document.getElementById("rsvpLink");
@@ -502,9 +468,38 @@
     });
   }
 
+  // Tabs (restaurantes)
+  const tabs = Array.from(document.querySelectorAll(".tab"));
+  const panes = Array.from(document.querySelectorAll("[data-pane]"));
+
+  function selectTab(key){
+    tabs.forEach(t => {
+      const active = t.dataset.tab === key;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    panes.forEach(p => {
+      p.style.display = (p.dataset.pane === key) ? "" : "none";
+    });
+  }
+
+  tabs.forEach(t => {
+    t.addEventListener("click", () => selectTab(t.dataset.tab));
+    t.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectTab(t.dataset.tab); }
+    });
+  });
+
+  // Constrói links do Google Maps por busca (sem depender do endereço exato)
+  document.querySelectorAll("[data-maps]").forEach(a => {
+    const q = a.getAttribute("data-maps");
+    a.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+
   document.getElementById("year").textContent = new Date().getFullYear();
-  tick();
-  setInterval(tick, 1000);
+  tick(); setInterval(tick, 1000);
 </script>
 </body>
 </html>
