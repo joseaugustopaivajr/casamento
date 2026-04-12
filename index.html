@@ -84,7 +84,28 @@
     .fact b{display:block;font-size:13px;margin-bottom:2px}
     .fact span{display:block;font-size:13px;color:var(--muted)}
 
+    .dress-code{margin-top:16px;padding:16px 20px;border-radius:14px;background:rgba(176,138,90,.12);border:2px dashed var(--accent);display:flex;align-items:center;gap:12px;box-shadow: 0 4px 12px rgba(176,138,90,0.15)}
+    .dress-code-text{font-size:15px;line-height:1.5;color:var(--text);font-weight:500}
+    .dress-code-text b{color:var(--accent2);font-weight:700}
+
     .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+    .brasao-container{
+      text-align:center;
+      margin-top:28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .brasao-container img{
+      max-width:440px;
+      width: 100%;
+      height:auto;
+      opacity:1;
+      filter: drop-shadow(0 6px 15px rgba(0,0,0,0.08)) contrast(1.05);
+      transition: transform 0.3s ease;
+    }
+    .brasao-container img:hover{transform: scale(1.02)}
     .tile{border:1px solid var(--line);background:rgba(255,255,255,.65);border-radius:14px;padding:14px 10px;text-align:center}
     .tile .n{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1;color:var(--text)}
     .tile .l{margin-top:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -110,9 +131,29 @@
     .btn.primary{border-color:rgba(176,138,90,.35);background:rgba(176,138,90,.18)}
     .btn.link{border-color:rgba(31,36,40,.12);background:rgba(255,255,255,.55)}
 
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .ph{position:relative;border-radius:16px;overflow:hidden;min-height:140px;border:1px solid rgba(31,36,40,.10);background:#f0ede7}
+    .gallery-wrapper{position:relative}
+    .gallery{
+      display:flex;gap:12px;overflow-x:auto;padding-bottom:14px;
+      scroll-snap-type:x mandatory;scrollbar-width:none;
+      -ms-overflow-style:none;scroll-behavior:smooth;
+    }
+    .gallery::-webkit-scrollbar{display:none}
+    .ph{
+      position:relative;border-radius:16px;overflow:hidden;
+      flex:0 0 280px;aspect-ratio:4/5;
+      scroll-snap-align:start;
+      border:1px solid rgba(31,36,40,.10);background:#f0ede7
+    }
     .ph img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02) contrast(1.02)}
+
+    .gallery-nav{display:flex;gap:8px;margin-top:10px;justify-content:center}
+    .nav-btn{
+      width:36px;height:36px;border-radius:99px;border:1px solid var(--line);
+      background:rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;
+      cursor:pointer;font-size:16px;transition:all .15s ease;backdrop-filter:blur(8px)
+    }
+    .nav-btn:hover{background:rgba(255,255,255,.90);transform:translateY(-1px)}
+    .nav-btn:active{transform:translateY(0)}
 
     footer{margin:22px 0 10px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
       display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -162,10 +203,12 @@
 
     @media (max-width: 920px){
       .grid{grid-template-columns:1fr}
-      .gallery{grid-template-columns:repeat(2,1fr)}
+      .gallery{gap:10px}
+      .ph{flex-basis:240px}
       .list{grid-template-columns:1fr}
       .grid3{grid-template-columns:1fr}
       .hero{min-height:520px}
+      .brasao-container img{max-width:320px}
     }
   </style>
 </head>
@@ -175,7 +218,7 @@
   <div class="topbar">
     <div class="brand">
       <div class="names">José & Beatriz</div>
-      <div class="date">Domingo, 06/09/2026 • 16:30 • Maison Cascade, Charitas, Niterói (RJ)</div>
+      <div class="date">Domingo, 06/09/2026 • 16:00 • Maison Cascade, Charitas, Niterói (RJ)</div>
     </div>
 
     <div class="pill" title="Save the Date">
@@ -211,7 +254,7 @@
           </div>
           <div class="fact">
             <div class="icon" aria-hidden="true">🕟</div>
-            <div><b>Horário</b><span>16:30</span></div>
+            <div><b>Horário</b><span>16:00</span></div>
           </div>
           <div class="fact">
             <div class="icon" aria-hidden="true">📍</div>
@@ -221,8 +264,14 @@
 
         <div class="cta">
           <a class="btn primary" href="#" id="mapLink" rel="noopener">🗺️ Ver rota (Waze/Maps)</a>
-          <a class="btn" href="#" id="rsvpLink" rel="noopener">🤍 Confirmar presença (em breve)</a>
+          <a class="btn" href="https://wa.me/message/7SORM2DW5FHUE1" id="rsvpLink" >🤎 Confirmar presença</a>
           <a class="btn" href="presentes.html">🎁 Presentes</a>
+        </div>
+
+        <div class="dress-code">
+          <div class="dress-code-text">
+            <b>Dress Code:</b> Para a harmonia da cerimônia, pedimos gentilmente que as <b>convidadas</b> <u>não usem</u> as cores <b>off-white</b> e <b>marrom</b>.
+          </div>
         </div>
       </div>
     </div>
@@ -237,6 +286,11 @@
           <div class="tile"><div class="n" id="hh">—</div><div class="l">Horas</div></div>
           <div class="tile"><div class="n" id="mm">—</div><div class="l">Min</div></div>
           <div class="tile"><div class="n" id="ss">—</div><div class="l">Seg</div></div>
+        </div>
+
+        <div class="brasao-container">
+          <img src="assets/img/brasao.png" alt="Brasão José & Beatriz"
+               onerror="this.style.display='none'; this.parentElement.style.display='none'">
         </div>
       </div>
     </aside>
@@ -376,26 +430,85 @@
   <!-- ===== FOTOS ===== -->
   <section class="section" aria-label="Fotos" id="fotos">
     <div class="head">
-      <h3>Nossas fotos</h3>
-      <div class="hint">Um pedacinho da nossa história 🤍</div>
+      <h3>Nosso Pré-Wedding</h3>
+      <div class="hint">Um pedacinho da nossa história 🤎</div>
     </div>
 
-    <div class="gallery">
-      <div class="ph">
-        <img src="assets/img/foto-01.jpg" alt="Foto do casal 1"
-             onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-01.jpg</span>';">
+    <div class="gallery-wrapper">
+      <div class="gallery" id="gallery">
+        <div class="ph">
+          <img src="assets/img/foto-07.jpg" alt="Foto do casal 7"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-07.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-01.jpg" alt="Foto do casal 1"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-01.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-02.jpg" alt="Foto do casal 2"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-02.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-03.jpg" alt="Foto do casal 3"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-03.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-04.jpg" alt="Foto do casal 4"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-04.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-06.jpg" alt="Foto do casal 6"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-06.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-08.jpg" alt="Foto do casal 8"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-08.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-10.jpg" alt="Foto do casal 10"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-10.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-11.jpg" alt="Foto do casal 11"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-11.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-12.jpg" alt="Foto do casal 12"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-12.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-15.jpg" alt="Foto do casal 15"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-15.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-16.jpg" alt="Foto do casal 16"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-16.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-17.jpg" alt="Foto do casal 17"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-17.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-18.jpg" alt="Foto do casal 18"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-18.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-09.jpg" alt="Foto do casal 9"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-09.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-13.jpg" alt="Foto do casal 13"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-13.jpg</span>';">
+        </div>
+        <div class="ph">
+          <img src="assets/img/foto-14.jpg" alt="Foto do casal 14"
+               onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-14.jpg</span>';">
+        </div>
       </div>
-      <div class="ph">
-        <img src="assets/img/foto-02.jpg" alt="Foto do casal 2"
-             onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-02.jpg</span>';">
-      </div>
-      <div class="ph">
-        <img src="assets/img/foto-03.jpg" alt="Foto do casal 3"
-             onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-03.jpg</span>';">
-      </div>
-      <div class="ph">
-        <img src="assets/img/foto-04.jpg" alt="Foto do casal 4"
-             onerror="this.remove(); this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML='<span style=&quot;color:#6b6b6b;font-size:13px;padding:16px;text-align:center;&quot;>Coloque aqui: assets/img/foto-04.jpg</span>';">
+
+      <div class="gallery-nav">
+        <button class="nav-btn" id="prevBtn" aria-label="Foto anterior">←</button>
+        <button class="nav-btn" id="nextBtn" aria-label="Próxima foto">→</button>
       </div>
     </div>
   </section>
@@ -409,7 +522,7 @@
 
 <script>
   const RSVP_URL = "";
-  const weddingDate = new Date("2026-09-06T16:30:00");
+  const weddingDate = new Date("2026-09-06T16:00:00");
   const lat = -22.930003;
   const lng = -43.0965043;
 
@@ -433,16 +546,7 @@
   }
   mapLink.addEventListener("click", (e)=>{ e.preventDefault(); openRoute(); });
 
-  if (RSVP_URL){
-    rsvpLink.href = RSVP_URL;
-    rsvpLink.target = "_blank";
-    rsvpLink.textContent = "🤍 Confirmar presença";
-  } else {
-    rsvpLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      alert("Em breve: vamos liberar o link de confirmação 🙂");
-    });
-  }
+
 
   const tabs = Array.from(document.querySelectorAll(".tab"));
   const panes = Array.from(document.querySelectorAll("[data-pane]"));
@@ -467,6 +571,15 @@
     a.target = "_blank";
     a.rel = "noopener";
   });
+
+  const gal = document.getElementById("gallery");
+  const prev = document.getElementById("prevBtn");
+  const next = document.getElementById("nextBtn");
+  if (gal && prev && next) {
+    const step = 300;
+    prev.addEventListener("click", () => gal.scrollBy({ left: -step, behavior: "smooth" }));
+    next.addEventListener("click", () => gal.scrollBy({ left: step, behavior: "smooth" }));
+  }
 
   year.textContent = new Date().getFullYear();
 </script>

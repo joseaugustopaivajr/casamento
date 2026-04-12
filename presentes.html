@@ -72,31 +72,91 @@
     .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.85)}
     .btn.primary{border-color:rgba(176,138,90,.35);background:rgba(176,138,90,.18)}
 
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px}
     .gift{
       border:1px solid var(--line);
       background:rgba(255,255,255,.65);
       border-radius:16px;
-      padding:14px;
+      padding:16px;
       display:flex;
+      flex-direction:column;
       justify-content:space-between;
       gap:12px;
-      align-items:flex-start;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .gift:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+      background: rgba(255,255,255,.85);
     }
     .gift .left{min-width:0}
-    .gift .title{font-weight:700;font-size:14px;margin-bottom:4px}
-    .gift .meta{font-size:13px;color:var(--muted);line-height:1.45}
+    .gift .title{font-weight:700;font-size:15px;margin-bottom:6px;line-height:1.3}
+    .gift .meta{font-size:13px;color:var(--muted);line-height:1.45;margin-bottom:12px}
+    .gift .bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:auto;
+      padding-top:10px;
+      border-top:1px dashed var(--line);
+    }
     .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      border:1px solid rgba(31,36,40,.10);
-      background:rgba(255,255,255,.55);
-      padding:7px 10px;border-radius:999px;
-      font-size:12px;color:var(--muted);
+      display:inline-flex;align-items:center;gap:6px;
+      border:1px solid rgba(31,36,40,.08);
+      background:rgba(255,255,255,.45);
+      padding:6px 10px;border-radius:999px;
+      font-size:11px;color:var(--muted);
+      font-weight:600;
       white-space:nowrap;
+    }
+    .price-tag{
+      font-size:14px;
+      font-weight:700;
+      color:var(--accent);
+    }
+    .category-title{
+      grid-column: 1 / -1;
+      font-family:"Cormorant Garamond",serif;
+      font-size:24px;
+      font-weight:600;
+      margin:20px 0 10px;
+      padding-bottom:8px;
+      border-bottom: 2px solid var(--accent);
+      width: fit-content;
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
     }
     .divider{height:1px;background:var(--line);margin:14px 0}
     .pixbox{
-      display:flex;gap:12px;align-items:center;flex-wrap:wrap
+      display:none;
+    }
+    .pix-values{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap:16px;
+      margin:25px 0
+    }
+    .btn-value{
+      border:2px solid var(--accent);
+      background:#fff;
+      color:var(--text);
+      padding:18px 20px;
+      border-radius:16px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:18px;
+      transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 4px 10px rgba(176,138,90,.12);
+    }
+    .btn-value:hover{
+      background:var(--accent);
+      color:#fff;
+      transform:translateY(-4px);
+      box-shadow:0 12px 24px rgba(176,138,90,.25);
     }
     .pix{
       border:1px dashed rgba(31,36,40,.22);
@@ -130,9 +190,8 @@
   <div class="card">
     <h1>Presentes (sem estresse)</h1>
     <p>
-      O maior presente é ter você com a gente 💛 <br/>
-      Mas, se você quiser nos ajudar a montar nosso cantinho (ou nossa lua de mel),
-      deixamos algumas ideias aqui — bem leve, sem obrigação.
+      O maior presente é ter você com a gente 🤎 <br/>
+      Mas, para quem quiser praticidade, deixamos algumas ideias por aqui.
     </p>
 
     <div class="cta">
@@ -145,59 +204,570 @@
 
     <h2 id="lista">Sugestões (pra facilitar)</h2>
     <p>
-      Você pode escolher qualquer um desses links — ou seguir seu coração e surpreender 😄
+      Você pode escolher qualquer um desseas opções abaixo ou seguir seu coração e surpreender
     </p>
 
     <div class="grid">
-      <!-- ====== EDITE AQUI: itens e links ====== -->
+      <!-- ====== LUA DE MEL & EXPERIÊNCIAS ====== -->
+      <div class="category-title">🌅 Lua de Mel & Experiências</div>
+
       <div class="gift">
         <div class="left">
-          <div class="title">Jantar a dois (lua de mel)</div>
-          <div class="meta">Um presentinho simbólico pra brindar a nova fase 🥂</div>
+          <div class="title">Jantar romântico lua de mel</div>
+          <div class="meta">Um momento especial para celebrarmos a sós.</div>
         </div>
-        <div>
-          <span class="tag">💛 simbólico</span>
-          <div style="height:8px"></div>
-          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        <div class="bottom">
+          <span class="tag">✈️ LUA DE MEL</span>
+          <span class="price-tag">R$ 500,00</span>
         </div>
       </div>
 
       <div class="gift">
         <div class="left">
-          <div class="title">Cafeteira / itens de cozinha</div>
-          <div class="meta">Pra deixar o nosso cantinho ainda mais gostoso ☕</div>
+          <div class="title">Mergulho na lua de mel</div>
+          <div class="meta">Para explorarmos as belezas do fundo do mar.</div>
         </div>
-        <div>
-          <span class="tag">🏡 casa</span>
-          <div style="height:8px"></div>
-          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
-        </div>
-      </div>
-
-      <div class="gift">
-        <div class="left">
-          <div class="title">Jogo de cama / toalhas</div>
-          <div class="meta">Conforto é tudo (e a gente ama) 🧺</div>
-        </div>
-        <div>
-          <span class="tag">🛏️ conforto</span>
-          <div style="height:8px"></div>
-          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        <div class="bottom">
+          <span class="tag">✈️ LUA DE MEL</span>
+          <span class="price-tag">R$ 700,00</span>
         </div>
       </div>
 
       <div class="gift">
         <div class="left">
-          <div class="title">Contribuição para a lua de mel</div>
-          <div class="meta">Ajuda a gente a criar memórias inesquecíveis 🌅</div>
+          <div class="title">Brunch da lua de mel</div>
+          <div class="meta">Aquele café da manhã tardio e caprichado.</div>
         </div>
-        <div>
-          <span class="tag">✈️ viagem</span>
-          <div style="height:8px"></div>
-          <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+        <div class="bottom">
+          <span class="tag">✈️ LUA DE MEL</span>
+          <span class="price-tag">R$ 300,00</span>
         </div>
       </div>
-      <!-- ====== /EDITE AQUI ====== -->
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Upgrade no voo da lua de mel</div>
+          <div class="meta">Um pouquinho mais de conforto na viagem.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">✈️ LUA DE MEL</span>
+          <span class="price-tag">R$ 1000,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Cafezinho no aeroporto</div>
+          <div class="meta">Sabemos que é mais caro, mas é essencial! ☕</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">✈️ LUA DE MEL</span>
+          <span class="price-tag">R$ 150,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Comprinhas no DutyFree</div>
+          <div class="meta">Pequenos luxos que cabem na mala</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">✈️ LUA DE MEL</span>
+          <span class="price-tag">R$ 750,00</span>
+        </div>
+      </div>
+
+      <!-- ====== PARA A CASA ====== -->
+      <div class="category-title">🏡 Para a Nossa Casa</div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Smart TV</div>
+          <div class="meta">Para nossas noites de cinema em casa.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 CASA</span>
+          <span class="price-tag">R$ 2.500,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Air Fryer</div>
+          <div class="meta">O item indispensável de todo casal moderno.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 450,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Batedeira</div>
+          <div class="meta">Para a noiva fazer bolos deliciosos (esperamos).</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 350,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Liquidificador</div>
+          <div class="meta">Para sucos, vitaminas e receitas práticas.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 200,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Aparelho de jantar</div>
+          <div class="meta">Para recebermos os amigos com estilo.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 400,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jogo de pratos</div>
+          <div class="meta">Pratos extras nunca são demais.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 300,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Conjunto de talheres</div>
+          <div class="meta">Talheres novos e brilhantes para nossa mesa.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 200,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jogo de xícara</div>
+          <div class="meta">Para aquele café da tarde especial.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 170,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jogo americano</div>
+          <div class="meta">Charme e praticidade para o dia a dia.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 100,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Conjunto para fondue</div>
+          <div class="meta">Para nossas noites românticas no inverno.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 COZINHA</span>
+          <span class="price-tag">R$ 200,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Aspirador de pó</div>
+          <div class="meta">Tecnologia a favor da nossa limpeza.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 CASA</span>
+          <span class="price-tag">R$ 300,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Umidificador</div>
+          <div class="meta">Para noites de sono mais frescas e saudáveis.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 CASA</span>
+          <span class="price-tag">R$ 150,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Tapete para a sala</div>
+          <div class="meta">Aconchego para o coração da nossa casa.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 DECORAÇÃO</span>
+          <span class="price-tag">R$ 350,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Abajur</div>
+          <div class="meta">Iluminação suave para nossa leitura noturna.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 DECORAÇÃO</span>
+          <span class="price-tag">R$ 120,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Lustre</div>
+          <div class="meta">O toque final de elegância na nossa sala.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 DECORAÇÃO</span>
+          <span class="price-tag">R$ 500,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Rack TV</div>
+          <div class="meta">Para organizar nossa sala com estilo.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏡 MÓVEIS</span>
+          <span class="price-tag">R$ 450,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jogo de cama</div>
+          <div class="meta">Conforto e beleza para o nosso quarto.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🛏️ CONFORTO</span>
+          <span class="price-tag">R$ 250,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Lençóis de elástico 400 fios</div>
+          <div class="meta">Praticidade (porque ninguém merece lençol solto).</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🛏️ CONFORTO</span>
+          <span class="price-tag">R$ 400,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Jogo de toalhas</div>
+          <div class="meta">Maciez para o nosso pós-banho.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🧺 BANHO</span>
+          <span class="price-tag">R$ 180,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Aparelho de massagem</div>
+          <div class="meta">Para manter a circulação e felicidade em dia.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🧺 BANHO</span>
+          <span class="price-tag">R$ 300,00</span>
+        </div>
+      </div>
+
+      <!-- ====== BRINCADEIRAS & SIMBÓLICOS ====== -->
+      <div class="category-title">🎁 Brincadeiras & Simbólicos</div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Tampão de ouvido para a noiva</div>
+          <div class="meta">Para a noiva não ouvir o noivo roncar. Essencial!</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🤣 DIVERSÃO</span>
+          <span class="price-tag">R$ 100,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Cobertor da razão</div>
+          <div class="meta">Para a noiva sempre estar coberta de razão.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🤣 DIVERSÃO</span>
+          <span class="price-tag">R$ 180,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Rolo de macarrão tático</div>
+          <div class="meta">Para a noiva usar quando necessário. Perigo! ⚠️</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🤣 DIVERSÃO</span>
+          <span class="price-tag">R$ 100,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Capacete anti-rolo de macarrão</div>
+          <div class="meta">Segurança em primeiro lugar para o noivo.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🤣 DIVERSÃO</span>
+          <span class="price-tag">R$ 150,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Vale jogo livre (noivo)</div>
+          <div class="meta">Vale para a noiva deixar o noivo jogar à vontade.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🎮 JOGOS</span>
+          <span class="price-tag">R$ 100,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Eu não vou embora!</div>
+          <div class="meta">Hora extra da festa para os inimigos do fim.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🥳 FESTA</span>
+          <span class="price-tag">R$ 300,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Rodízio de japonês</div>
+          <div class="meta">Porque a gente ama um sushi! 🍣</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🍱 COMIDA</span>
+          <span class="price-tag">R$ 500,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">3 meses de Netflix</div>
+          <div class="meta">Para nossas maratonas de séries.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🎬 LAZER</span>
+          <span class="price-tag">R$ 150,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">3 meses de cafezinho pro noivo</div>
+          <div class="meta">Garantindo a cafeína diária.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">☕ CAFÉ</span>
+          <span class="price-tag">R$ 150,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Camisas do Flamengo</div>
+          <div class="meta">Para torcermos juntos pelo Mengão! ❤️🖤</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">⚽ TIME</span>
+          <span class="price-tag">R$ 600,00</span>
+        </div>
+      </div>
+
+      <!-- ====== AUTO CUIDADO ====== -->
+      <div class="category-title">✨ Bem-Estar & Cuidados</div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Vale massagem para os noivos</div>
+          <div class="meta">Um momento de relaxamento após o casamento.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">💆 RELAX</span>
+          <span class="price-tag">R$ 300,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Um ano de barba e cabelo do noivo</div>
+          <div class="meta">Para o noivo estar sempre apresentável.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">💈 BELEZA</span>
+          <span class="price-tag">R$ 800,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Um ano de unha da noiva</div>
+          <div class="meta">Para a noiva estar sempre com as mãos lindas.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">💅 BELEZA</span>
+          <span class="price-tag">R$ 800,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Pra noiva não ficar com a boca murcha</div>
+          <div class="meta">Preenchimento labial para a noiva.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">💄 BELEZA</span>
+          <span class="price-tag">R$ 1000,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Perfume para o noivo</div>
+          <div class="meta">Aquele toque especial de fragrância.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🧴 PERFUMARIA</span>
+          <span class="price-tag">R$ 900,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Perfume para a noiva</div>
+          <div class="meta">Sua fragrância favorita para momentos especiais.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🧴 PERFUMARIA</span>
+          <span class="price-tag">R$ 600,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Um ano de academia para o casal</div>
+          <div class="meta">Foco na saúde e no "shape" pós-casório.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">💪 SAÚDE</span>
+          <span class="price-tag">R$ 1.200,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">3 meses aula de tênis do noivo</div>
+          <div class="meta">Para o noivo aprimorar o backhand.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🎾 ESPORTE</span>
+          <span class="price-tag">R$ 900,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Raquete nova para o noivo</div>
+          <div class="meta">Equipamento de ponta para as partidas.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🎾 ESPORTE</span>
+          <span class="price-tag">R$ 1.200,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Curso para a noiva</div>
+          <div class="meta">Investimento em conhecimento e futuro.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">📚 ESTUDO</span>
+          <span class="price-tag">R$ 1.500,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Caixa de ferramenta pro noivo</div>
+          <div class="meta">Para as manutenções necessárias na casa nova.</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🛠️ ÚTIL</span>
+          <span class="price-tag">R$ 350,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Relógio para os noivos</div>
+          <div class="meta">Para pararem de se atrasar (será que funciona?).</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">⌚ ACESSÓRIO</span>
+          <span class="price-tag">R$ 1.500,00</span>
+        </div>
+      </div>
+
+      <div class="gift">
+        <div class="left">
+          <div class="title">Dar uma olhadinha no exame</div>
+          <div class="meta">Aquele pedido clássico de "olhadinha". 😉</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏥 SAÚDE</span>
+          <span class="price-tag">R$ 250,00</span>
+        </div>
+      </div>
+      <div class="gift">
+        <div class="left">
+          <div class="title">Pedir um atestado</div>
+          <div class="meta">Atestado pós festa, indicado para quadros agudos de preguiça justificada após se acabar no casamento 😉</div>
+        </div>
+        <div class="bottom">
+          <span class="tag">🏥 SAÚDE</span>
+          <span class="price-tag">R$ 250,00</span>
+        </div>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -205,12 +775,21 @@
     <h2 id="pix">PIX (pra quem prefere praticidade)</h2>
     <p>Se quiser contribuir com qualquer valor, aqui vai a opção mais simples:</p>
 
-    <div class="pixbox">
-      <div class="pix" id="pixKey">SUA_CHAVE_PIX_AQUI</div>
-      <button class="btn" id="copyPix">📋 Copiar PIX</button>
+    <div class="pix-values">
+      <button class="btn-value" data-value="50">R$ 50</button>
+      <button class="btn-value" data-value="100">R$ 100</button>
+      <button class="btn-value" data-value="200">R$ 200</button>
+      <button class="btn-value" data-value="500">R$ 500</button>
+      <button class="btn-value" data-value="1000">R$ 1000</button>
     </div>
 
-    <p style="font-size:13px">
+    <div id="pixFeedback" style="text-align:center; margin-top:10px; font-weight:600; color:var(--accent); height:20px; font-size:14px"></div>
+
+    <p style="font-size:13px; text-align:center; margin-top:20px">
+      Ao clicar em um valor, a chave PIX será copiada automaticamente! ✨
+    </p>
+
+    <p style="font-size:12px; color:var(--muted); text-align:center; opacity:0.8">
       *Se você não usa PIX, sem problema — o importante é estar com a gente 🤍
     </p>
   </div>
@@ -225,16 +804,23 @@
   year.textContent = new Date().getFullYear();
 
   // Copiar PIX
-  const btn = document.getElementById("copyPix");
-  const key = document.getElementById("pixKey");
-  btn.addEventListener("click", async () => {
-    try{
-      await navigator.clipboard.writeText(key.textContent.trim());
-      btn.textContent = "✅ Copiado!";
-      setTimeout(()=> btn.textContent = "📋 Copiar PIX", 1400);
-    }catch(e){
-      alert("Não consegui copiar automaticamente. Selecione e copie a chave PIX manualmente 🙂");
+  const PIX_KEY = "SUA_CHAVE_PIX_AQUI"; // <--- COLOQUE SUA CHAVE AQUI
+  const feedback = document.getElementById("pixFeedback");
+
+  async function copyPix() {
+    try {
+      await navigator.clipboard.writeText(PIX_KEY);
+      feedback.textContent = "✅ Chave PIX copiada com sucesso!";
+      setTimeout(() => feedback.textContent = "", 2500);
+    } catch (e) {
+      alert("Não consegui copiar automaticamente. Chave: " + PIX_KEY);
     }
+  }
+
+  document.querySelectorAll(".btn-value").forEach(b => {
+    b.addEventListener("click", () => {
+      copyPix();
+    });
   });
 </script>
 </body>
