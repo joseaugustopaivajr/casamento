@@ -41,7 +41,8 @@
     .brand .names{font-family:"Cormorant Garamond",serif;font-size:28px;letter-spacing:.2px;font-weight:600}
     .brand .date{font-size:13px;color:var(--muted)}
     .pill{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.55);
-      padding:10px 12px;border-radius:999px;font-size:13px;color:var(--muted);backdrop-filter:blur(8px)}
+      padding:10px 12px;border-radius:999px;font-size:13px;color:var(--muted);backdrop-filter:blur(8px);text-decoration:none;transition:all .2s ease}
+    .pill:hover{transform:translateY(-1px);border-color:var(--accent);background:rgba(255,255,255,.85);color:var(--text)}
     .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px rgba(176,138,90,.12)}
 
     .hero{
@@ -62,8 +63,10 @@
     .kicker{
       display:inline-flex;align-items:center;gap:10px;width:fit-content;padding:10px 14px;border-radius:999px;
       background:rgba(255,255,255,.14);color:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.22);
-      backdrop-filter:blur(8px);text-transform:uppercase;letter-spacing:.18em;font-size:11px
+      backdrop-filter:blur(8px);text-transform:uppercase;letter-spacing:.18em;font-size:11px;
+      text-decoration:none;transition:all .2s ease
     }
+    .kicker:hover{background:rgba(255,255,255,.25);transform:translateY(-1px);border-color:rgba(255,255,255,.45)}
     h1{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;color:#fff;letter-spacing:.2px;
       font-size:clamp(38px,6vw,62px);line-height:.96;text-shadow:0 10px 25px rgba(0,0,0,.25)}
     .subtitle{margin:0;max-width:720px;font-size:15.5px;color:rgba(255,255,255,.90);line-height:1.55}
@@ -239,6 +242,17 @@
       font-weight:600;
     }
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .hotel-gallery-wrapper{position:relative}
+    .hotel-gallery{
+      display:flex;gap:12px;overflow-x:auto;padding-bottom:14px;
+      scroll-snap-type:x mandatory;scrollbar-width:none;
+      -ms-overflow-style:none;scroll-behavior:smooth;
+    }
+    .hotel-gallery::-webkit-scrollbar{display:none}
+    .hotel-gallery .rest{
+      flex:0 0 300px;
+      scroll-snap-align:start;
+    }
     .rest{
       border:1px solid var(--line);
       background:rgba(255,255,255,.65);
@@ -284,15 +298,15 @@
       <div class="date">Domingo, 06/09/2026 • 16:00 • Maison Cascade, Charitas, Niterói (RJ)</div>
     </div>
 
-    <div class="pill" title="Save the Date">
+    <a href="#" class="pill calendar-btn" title="Adicionar ao calendário">
       <span class="dot"></span>
       Save the Date
-    </div>
+    </a>
   </div>
 
   <section class="hero" aria-label="Capa">
     <div class="hero-inner">
-      <div class="kicker">Save the Date</div>
+      <a href="#" class="kicker calendar-btn">Save the Date</a>
       <h1>José & Beatriz</h1>
       <p class="subtitle">
         Entre o pôr do sol, o mar e a vista que só Niterói tem, vamos dizer nosso <b>SIM</b>.
@@ -327,13 +341,13 @@
 
         <div class="cta">
           <a class="btn primary" href="#" id="mapLink" rel="noopener">🗺️ Ver rota (Waze/Maps)</a>
-          <a class="btn" href="https://api.whatsapp.com/send?phone=5521988155486&text=Confirmo%20a%20presen%C3%A7a%20no%20casamento%20de%20Jos%C3%A9%20e%20Beatriz%20que%20ocorrer%C3%A1%20no%20dia%2006%2F09%2F26%20na%20Maison%20Cascade%2C%20nome%20dos%20convidados%20s%C3%A3o%20%3A%0A" id="rsvpLink" >🤎 Confirmar presença</a>
+          <a class="btn" href="https://api.whatsapp.com/send?phone=5521988155486&text=Confirmo%20a%20presen%C3%A7a%20no%20casamento%20de%20Jos%C3%A9%20e%20Beatriz%20que%20ocorrer%C3%A1%20no%20dia%2006%2F09%2F26%20na%20Maison%20Cascade.%0AOs%20nomes%20dos%20convidados%20s%C3%A3o%3A%0A" id="rsvpLink" >🤎 Confirmar presença</a>
           <a class="btn" href="presentes.html">🎁 Presentes</a>
         </div>
 
         <div class="dress-code">
           <div class="dress-code-text">
-            <b>Dress Code:</b> Para a harmonia da cerimônia, pedimos gentilmente que as <b>convidadas</b> <u>não usem</u> as cores <b>off-white</b> e <b>marrom</b>.
+            <b>Dress Code:</b> Para a harmonia da cerimônia, pedimos gentilmente que as <b>convidadas</b> <u>não usem</u> as cores <b>off-white</b> , <b> branco </b> e <b>marrom</b>.
           </div>
         </div>
       </div>
@@ -487,6 +501,47 @@
 
     <div style="margin-top:10px;color:var(--muted);font-size:13px">
       *Dica: clique em “Abrir no Maps” para ver horários, avaliações e rota.
+    </div>
+  </section>
+
+  <!-- ===== ONDE SE HOSPEDAR ===== -->
+  <section class="section" aria-label="Hospedagem">
+    <div class="head">
+      <h3>Onde se hospedar em Niterói</h3>
+      <div class="hint">Sugestões de hotéis para sua estadia</div>
+    </div>
+
+    <div class="hotel-gallery-wrapper">
+      <div class="hotel-gallery" id="hotelGallery">
+        <div class="rest">
+          <div class="top"><div class="name">H Niterói</div><div class="badge">hotel</div></div>
+          <div class="desc">Localização privilegiada na Orla de Icaraí com vista para o MAC e o Rio de Janeiro.</div>
+          <div class="actions"><a class="btn link" href="#" data-maps="H de Niterói Hotel">Abrir no Maps</a></div>
+        </div>
+
+        <div class="rest">
+          <div class="top"><div class="name">Hotel Solar do Amanhecer</div><div class="badge">hotel</div></div>
+          <div class="desc">Localizado em Charitas, em frente à praia, com vista panorâmica da Baía de Guanabara.</div>
+          <div class="actions"><a class="btn link" href="#" data-maps="Hotel Solar do Amanhecer Niterói">Abrir no Maps</a></div>
+        </div>
+
+        <div class="rest">
+          <div class="top"><div class="name">Camboinhas Beach Pousada</div><div class="badge">pousada</div></div>
+          <div class="desc">Localizada na tranquila Praia de Camboinhas, uma opção charmosa e pé na areia.</div>
+          <div class="actions"><a class="btn link" href="#" data-maps="Camboinhas Beach Pousada">Abrir no Maps</a></div>
+        </div>
+
+        <div class="rest">
+          <div class="top"><div class="name">Niterói Palace Hotel</div><div class="badge">hotel</div></div>
+          <div class="desc">Opção tradicional no centro da cidade, com fácil acesso aos principais pontos.</div>
+          <div class="actions"><a class="btn link" href="#" data-maps="Niterói Palace Hotel">Abrir no Maps</a></div>
+        </div>
+      </div>
+
+      <div class="gallery-nav">
+        <button class="nav-btn" id="hotelPrevBtn" aria-label="Anterior">←</button>
+        <button class="nav-btn" id="hotelNextBtn" aria-label="Próximo">→</button>
+      </div>
     </div>
   </section>
 
@@ -653,6 +708,15 @@
     next.addEventListener("click", () => gal.scrollBy({ left: step, behavior: "smooth" }));
   }
 
+  const hgal = document.getElementById("hotelGallery");
+  const hprev = document.getElementById("hotelPrevBtn");
+  const hnext = document.getElementById("hotelNextBtn");
+  if (hgal && hprev && hnext) {
+    const hstep = 300;
+    hprev.addEventListener("click", () => hgal.scrollBy({ left: -hstep, behavior: "smooth" }));
+    hnext.addEventListener("click", () => hgal.scrollBy({ left: hstep, behavior: "smooth" }));
+  }
+
   year.textContent = new Date().getFullYear();
 
   // Lógica da Música
@@ -721,6 +785,55 @@
     audio.onplay = updateMusicUI;
     audio.onpause = updateMusicUI;
   }
+
+  // Função para adicionar evento ao calendário
+  function addToCalendar() {
+    const title = "Casamento de José & Beatriz";
+    const details = "Casamento de José & Beatriz na Maison Cascade. Contamos com sua presença!";
+    const location = "Maison Cascade — Charitas, Niterói (RJ)";
+    const startDate = "20260906T160000";
+    const endDate = "20260907T000000";
+
+    // Link para Google Calendar
+    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+
+    // Gerar arquivo .ics para outros calendários (Outlook, iCal, etc.)
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "BEGIN:VEVENT",
+      `DTSTART:${startDate}`,
+      `DTEND:${endDate}`,
+      `SUMMARY:${title}`,
+      `DESCRIPTION:${details}`,
+      `LOCATION:${location}`,
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\n");
+
+    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // No mobile, abrimos o link do Google Calendar que costuma funcionar melhor ou baixar o .ics
+      window.open(googleUrl, "_blank");
+    } else {
+      // No desktop, oferecemos o download do .ics
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute("download", "casamento-jose-beatriz.ics");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+
+  document.querySelectorAll(".calendar-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      addToCalendar();
+    });
+  });
 </script>
 </body>
 </html>
