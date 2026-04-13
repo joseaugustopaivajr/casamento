@@ -110,6 +110,64 @@
     .tile .n{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1;color:var(--text)}
     .tile .l{margin-top:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
+    /* Estilos do Botão de Música */
+    .music-control {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .music-control:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .music-control .icon-music {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .music-control.playing .icon-music {
+      animation: pulse-music 2s infinite;
+    }
+    .music-control .label-music {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: max-width 0.5s ease, margin 0.5s ease;
+      margin-left: 0;
+    }
+    .music-control:hover .label-music {
+      max-width: 200px;
+      margin-left: 4px;
+    }
+    @keyframes pulse-music {
+      0% { box-shadow: 0 0 0 0 rgba(176,138,90, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(176,138,90, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(176,138,90, 0); }
+    }
+
     .section{margin-top:18px}
     .section .head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:0 2px;margin:10px 0 12px}
     .section .head h3{margin:0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:26px}
@@ -518,6 +576,16 @@
     <div>© <span id="year"></span> José & Beatriz</div>
     <div style="opacity:.9">Save the Date • Niterói (RJ)</div>
   </footer>
+
+  <!-- Controle de Música -->
+  <div id="musicControl" class="music-control" title="Clique para tocar/pausar a música">
+    <div class="icon-music">▶</div>
+    <div class="label-music">Aliança - Tribalistas</div>
+    <audio id="bgMusic" loop>
+      <source src="audio/musica.mp3" type="audio/mpeg">
+      <!-- Fonte da música Aliança - Tribalistas -->
+    </audio>
+  </div>
 </div>
 
 <script>
@@ -582,6 +650,53 @@
   }
 
   year.textContent = new Date().getFullYear();
+
+  // Lógica da Música
+  const musicBtn = document.getElementById("musicControl");
+  const audio = document.getElementById("bgMusic");
+  const musicIcon = musicBtn.querySelector(".icon-music");
+
+  if (musicBtn && audio) {
+    let isPlaying = false;
+    audio.volume = 0.5; // Volume ambiente
+
+    function toggleMusic() {
+      if (isPlaying) {
+        audio.pause();
+        musicIcon.textContent = "▶";
+        musicBtn.classList.remove("playing");
+      } else {
+        audio.play().catch(e => console.log("Erro ao tocar áudio:", e));
+        musicIcon.textContent = "⏸";
+        musicBtn.classList.add("playing");
+      }
+      isPlaying = !isPlaying;
+    }
+
+    musicBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMusic();
+    });
+
+    // Iniciar automaticamente ao carregar ou na primeira interação do usuário
+    const startMusic = () => {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          musicIcon.textContent = "⏸";
+          musicBtn.classList.add("playing");
+        }).catch(e => console.log("Autoplay bloqueado pelo navegador, aguardando interação..."));
+      }
+    };
+
+    // Tentar tocar imediatamente (alguns navegadores podem permitir se houver cache/interação prévia)
+    startMusic();
+
+    // Fallback: Tocar na primeira interação real com o documento
+    document.addEventListener("click", startMusic, { once: true });
+    document.addEventListener("touchstart", startMusic, { once: true });
+    document.addEventListener("scroll", startMusic, { once: true });
+  }
 </script>
 </body>
 </html>
