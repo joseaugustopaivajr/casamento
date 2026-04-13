@@ -179,8 +179,7 @@
       max-width: 200px;
       overflow: hidden;
       white-space: nowrap;
-      transition: max-width 0.5s ease, margin 0.5s ease;
-      margin-left: 4px;
+      margin-left: 8px;
     }
     .music-control:hover {
       border-color: var(--accent);
@@ -207,6 +206,21 @@
     }
     @media (max-width: 640px){
       .grid{grid-template-columns:1fr}
+      .music-control {
+        bottom: 16px;
+        right: 16px;
+        padding: 6px 12px;
+        gap: 8px;
+      }
+      .music-control .label-music {
+        font-size: 11px;
+        max-width: 150px;
+      }
+      .music-control .icon-music {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
     }
     .divider{height:1px;background:var(--line);margin:14px 0}
     .pixbox{
