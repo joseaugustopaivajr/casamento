@@ -662,10 +662,10 @@
   <!-- Controle de Música -->
   <div id="musicControl" class="music-control" title="Clique para tocar/pausar a música">
     <div class="icon-music">▶</div>
-    <div class="label-music">Aliança - Tribalistas</div>
+    <div class="label-music">Música preferida do casal</div>
     <audio id="bgMusic" loop>
       <source src="audio/musica.mp3" type="audio/mpeg">
-      <!-- Fonte da música Aliança - Tribalistas -->
+      <!-- Fonte da música -->
     </audio>
   </div>
 </div>
@@ -776,36 +776,12 @@
       toggleMusic();
     });
 
-    // Iniciar automaticamente ao carregar ou na primeira interação do usuário
-    const startMusic = () => {
-      if (audio.paused) {
-        audio.play().then(() => {
-          updateMusicUI();
-        }).catch(e => console.log("Autoplay bloqueado pelo navegador, aguardando interação..."));
-      } else {
-        updateMusicUI();
-      }
-    };
-
-    // Tentar tocar imediatamente (alguns navegadores podem permitir se houver cache/interação prévia)
-    startMusic();
-
-    // Fallback: Tocar na primeira interação real com o documento
-    // Safari e iOS exigem uma interação direta para desbloquear áudio
-    const interactionEvents = ["click", "touchstart", "scroll", "keydown", "mousemove", "mousedown"];
-    const handleInteraction = () => {
-      startMusic();
-      // Removemos todos os listeners após a primeira interação bem-sucedida ou tentativa
-      interactionEvents.forEach(evt => document.removeEventListener(evt, handleInteraction));
-    };
-
-    interactionEvents.forEach(evt => {
-      document.addEventListener(evt, handleInteraction, { once: true });
-    });
-
     // Sincronizar UI se o áudio for pausado/tocado por outros meios
     audio.onplay = updateMusicUI;
     audio.onpause = updateMusicUI;
+
+    // Configurar estado inicial da UI
+    updateMusicUI();
   }
 
   // Função para adicionar evento ao calendário
