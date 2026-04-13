@@ -73,6 +73,9 @@
     .btn.primary{border-color:rgba(176,138,90,.35);background:rgba(176,138,90,.18)}
 
     .grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px}
+    @media (max-width: 600px){
+      .grid{display:flex;flex-direction:column;gap:14px}
+    }
     .gift{
       border:1px solid var(--line);
       background:rgba(255,255,255,.65);
@@ -301,7 +304,7 @@
   <div class="top">
     <div class="brand">
       <p class="names">José & Beatriz</p>
-      <div class="sub">Presentes • do jeitinho que a gente gosta 😄</div>
+      <div class="sub">Presentes 😄</div>
     </div>
     <div class="pill"><span class="dot"></span>Lista de Presentes</div>
   </div>
@@ -316,7 +319,7 @@
     <div class="cta">
       <a class="btn primary" href="index.html">← Voltar para o site</a>
       <a class="btn" href="#lista">🎁 Ver sugestões</a>
-      <a class="btn" href="#pix">✨ Contribuir via PIX</a>
+      <a class="btn" href="#pix">✨ Presente via PIX</a>
     </div>
 
     <div class="divider"></div>
@@ -892,7 +895,7 @@
     <div class="divider"></div>
 
     <h2 id="pix">PIX (pra quem prefere praticidade)</h2>
-    <p>Se quiser contribuir com qualquer valor, aqui vai a opção mais simples:</p>
+    <p>Para quem prefere praticidade, aqui vai a opção mais simples</p>
 
     <div class="pix-values">
       <button class="btn-value" data-value="50">R$ 50</button>
@@ -964,19 +967,27 @@
 
   if (musicBtn && audio) {
     let isPlaying = false;
-    audio.volume = 0.5; // Volume ambiente
+    audio.volume = 0.2; // Volume ambiente reduzido para maior conforto
 
-    function toggleMusic() {
-      if (isPlaying) {
-        audio.pause();
+    function updateMusicUI() {
+      if (audio.paused) {
         musicIcon.textContent = "▶";
         musicBtn.classList.remove("playing");
+        isPlaying = false;
       } else {
-        audio.play().catch(e => console.log("Erro ao tocar áudio:", e));
         musicIcon.textContent = "⏸";
         musicBtn.classList.add("playing");
+        isPlaying = true;
       }
-      isPlaying = !isPlaying;
+    }
+
+    function toggleMusic() {
+      if (!audio.paused) {
+        audio.pause();
+      } else {
+        audio.play().catch(e => console.log("Erro ao tocar áudio:", e));
+      }
+      updateMusicUI();
     }
 
     musicBtn.addEventListener("click", (e) => {
@@ -986,12 +997,12 @@
 
     // Iniciar automaticamente ao carregar ou na primeira interação do usuário
     const startMusic = () => {
-      if (!isPlaying) {
+      if (audio.paused) {
         audio.play().then(() => {
-          isPlaying = true;
-          musicIcon.textContent = "⏸";
-          musicBtn.classList.add("playing");
+          updateMusicUI();
         }).catch(e => console.log("Autoplay bloqueado pelo navegador, aguardando interação..."));
+      } else {
+        updateMusicUI();
       }
     };
 
@@ -999,9 +1010,19 @@
     startMusic();
 
     // Fallback: Tocar na primeira interação real com o documento
-    document.addEventListener("click", startMusic, { once: true });
-    document.addEventListener("touchstart", startMusic, { once: true });
-    document.addEventListener("scroll", startMusic, { once: true });
+    const interactionEvents = ["click", "touchstart", "scroll", "keydown", "mousemove", "mousedown"];
+    const handleInteraction = () => {
+      startMusic();
+      interactionEvents.forEach(evt => document.removeEventListener(evt, handleInteraction));
+    };
+
+    interactionEvents.forEach(evt => {
+      document.addEventListener(evt, handleInteraction, { once: true });
+    });
+
+    // Sincronizar UI se o áudio for pausado/tocado por outros meios
+    audio.onplay = updateMusicUI;
+    audio.onpause = updateMusicUI;
   }
 </script>
 </body>

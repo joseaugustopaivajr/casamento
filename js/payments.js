@@ -127,7 +127,7 @@ function showPaymentModal(qrCodeBase64, pixCode, amount) {
   modal.innerHTML = `
     <div class="modal-content">
       <button class="modal-close" onclick="closePaymentModal()">&times;</button>
-      <h3>Contribuir com R$ ${parseFloat(amount).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</h3>
+      <h3>Presente de R$ ${parseFloat(amount).toLocaleString('pt-BR', {minimumFractionDigits: 2})}</h3>
 
       <div class="pix-receiver-alert">
         ⚠️ <strong>Confirmação de Segurança:</strong><br>

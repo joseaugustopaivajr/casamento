@@ -69,6 +69,9 @@
     .subtitle{margin:0;max-width:720px;font-size:15.5px;color:rgba(255,255,255,.90);line-height:1.55}
 
     .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+    @media (max-width: 920px){
+      .grid{display:flex;flex-direction:column;gap:18px}
+    }
     .card{
       background:var(--card);border:1px solid rgba(31,36,40,.10);border-radius:var(--radius);
       box-shadow:0 10px 25px rgba(0,0,0,.06);backdrop-filter:blur(10px);overflow:hidden
@@ -217,8 +220,10 @@
       display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
     /* ====== RESTAURANTES ====== */
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+    .tabs{display:flex;gap:10px;flex-wrap:nowrap;margin:10px 0 14px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none}
+    .tabs::-webkit-scrollbar{display:none}
     .tab{
+      flex:0 0 auto;
       border:1px solid var(--line);
       background:rgba(255,255,255,.60);
       padding:10px 12px;border-radius:999px;
@@ -322,7 +327,7 @@
 
         <div class="cta">
           <a class="btn primary" href="#" id="mapLink" rel="noopener">🗺️ Ver rota (Waze/Maps)</a>
-          <a class="btn" href="https://wa.me/message/7SORM2DW5FHUE1?text=Confirmo%20a%20presen%C3%A7a%20no%20casamento%20de%20Jos%C3%A9%20e%20Beatriz%20que%20ocorrer%C3%A1%20no%20dia%2006%2F09%2F26%20na%20Maison%20Cascade%2C%20nome%20dos%20convidados%20s%C3%A3o%20%3A" id="rsvpLink" >🤎 Confirmar presença</a>
+          <a class="btn" href="https://api.whatsapp.com/send?phone=5521988155486&text=Confirmo%20a%20presen%C3%A7a%20no%20casamento%20de%20Jos%C3%A9%20e%20Beatriz%20que%20ocorrer%C3%A1%20no%20dia%2006%2F09%2F26%20na%20Maison%20Cascade%2C%20nome%20dos%20convidados%20s%C3%A3o%20%3A%0A" id="rsvpLink" >🤎 Confirmar presença</a>
           <a class="btn" href="presentes.html">🎁 Presentes</a>
         </div>
 
@@ -589,7 +594,6 @@
 </div>
 
 <script>
-  const RSVP_URL = "";
   const weddingDate = new Date("2026-09-06T16:00:00");
   const lat = -22.930003;
   const lng = -43.0965043;
@@ -658,19 +662,27 @@
 
   if (musicBtn && audio) {
     let isPlaying = false;
-    audio.volume = 0.5; // Volume ambiente
+    audio.volume = 0.2; // Volume ambiente reduzido para maior conforto
 
-    function toggleMusic() {
-      if (isPlaying) {
-        audio.pause();
+    function updateMusicUI() {
+      if (audio.paused) {
         musicIcon.textContent = "▶";
         musicBtn.classList.remove("playing");
+        isPlaying = false;
       } else {
-        audio.play().catch(e => console.log("Erro ao tocar áudio:", e));
         musicIcon.textContent = "⏸";
         musicBtn.classList.add("playing");
+        isPlaying = true;
       }
-      isPlaying = !isPlaying;
+    }
+
+    function toggleMusic() {
+      if (!audio.paused) {
+        audio.pause();
+      } else {
+        audio.play().catch(e => console.log("Erro ao tocar áudio:", e));
+      }
+      updateMusicUI();
     }
 
     musicBtn.addEventListener("click", (e) => {
@@ -680,12 +692,12 @@
 
     // Iniciar automaticamente ao carregar ou na primeira interação do usuário
     const startMusic = () => {
-      if (!isPlaying) {
+      if (audio.paused) {
         audio.play().then(() => {
-          isPlaying = true;
-          musicIcon.textContent = "⏸";
-          musicBtn.classList.add("playing");
+          updateMusicUI();
         }).catch(e => console.log("Autoplay bloqueado pelo navegador, aguardando interação..."));
+      } else {
+        updateMusicUI();
       }
     };
 
@@ -693,9 +705,21 @@
     startMusic();
 
     // Fallback: Tocar na primeira interação real com o documento
-    document.addEventListener("click", startMusic, { once: true });
-    document.addEventListener("touchstart", startMusic, { once: true });
-    document.addEventListener("scroll", startMusic, { once: true });
+    // Safari e iOS exigem uma interação direta para desbloquear áudio
+    const interactionEvents = ["click", "touchstart", "scroll", "keydown", "mousemove", "mousedown"];
+    const handleInteraction = () => {
+      startMusic();
+      // Removemos todos os listeners após a primeira interação bem-sucedida ou tentativa
+      interactionEvents.forEach(evt => document.removeEventListener(evt, handleInteraction));
+    };
+
+    interactionEvents.forEach(evt => {
+      document.addEventListener(evt, handleInteraction, { once: true });
+    });
+
+    // Sincronizar UI se o áudio for pausado/tocado por outros meios
+    audio.onplay = updateMusicUI;
+    audio.onpause = updateMusicUI;
   }
 </script>
 </body>
